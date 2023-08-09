@@ -1,0 +1,203 @@
+{% extends 'projects/base.html' %}
+{% block content %}
+
+ <main class="projects">
+     <section class="hero-section text-center">
+         <div class="container container--narrow">
+             <div class="hero-section__box">
+                 <h2>Search for <span> epoxy resin products </span></h2>
+             </div>
+
+             <div class="hero-section__search">
+                 <form class="form" action="#" method="get">
+                     <div class="form__field">
+                         <label for="formInput#search"> Search By epoxy resin products </label>
+                         <input class="input input--text" id="formInput#search" type="text" name="text" placeholder="Search by Product Name" />
+                     </div>
+                     <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+                 </form>
+             </div>
+         </div>
+     </section>
+     <section class="projectsList">
+         <div class="container">
+             <div class="grid grid--three">
+                 {% for project in projects %}
+                 <div class="column">
+                <div class="card project">
+                  <a href="{% url 'project' project.id %}" class="project">
+                    <img class="project__thumbnail" src="{{ project.featured_image.url }}" alt="project thumbnail" />
+                    <div class="card__body">
+                      <h3 class="project__title">{{ project.title }}</h3>
+
+                      <p><a class="project__author" href="profile.html">By Ksenia</a></p>
+
+                      <p class="project--rating">
+                        <span style="font-weight: bold;">{{ project.vote_ratio }}</span> Postitive
+                        Feedback ({{project.vote_total}} Votes)
+                      </p>
+                      <div class="project__tags">
+                          {% for tag in project.tags.all %}
+                        <span class="tag tag--pill tag--main">
+                          <small>{{ tag }}</small>
+                        </span>
+                          {%  endfor %}
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+                 {% endfor %}
+
+<!--              {% for project1 in projects1 %}-->
+<!--              <div class="column">-->
+<!--                <div class="card project">-->
+<!--                  <a href="single-project.html" class="project">-->
+<!--                    <img class="project__thumbnail" src="images/B.jpg" alt="project thumbnail" />-->
+<!--                    <div class="card__body">-->
+<!--                      <h3 class="project__title"> Кольцо из эпоксидной смолы</h3>-->
+<!--                      <p><a class="project__author" href="profile.html">By Victoria</a></p>-->
+<!--                      <p class="project&#45;&#45;rating">-->
+<!--                        <span style="font-weight: bold;">92%</span> Postitive-->
+<!--                        Feedback (62 Votes)-->
+<!--                      </p>-->
+<!--                      <div class="project__tags">-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Epoxy resin</small>-->
+<!--                        </span>-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Dried flowers</small>-->
+<!--                        </span>-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Tree</small>-->
+<!--                        </span>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--                 {% endfor %}-->
+
+<!--              {% for project2 in projects2 %}-->
+<!--              <div class="column">-->
+<!--                <div class="card project">-->
+<!--                  <a href="single-project.html" class="project">-->
+<!--                    <img class="project__thumbnail" src="images/C.jpg" alt="project thumbnail" />-->
+<!--                    <div class="card__body">-->
+<!--                      <h3 class="project__title">Часы из эпоксидной смолы</h3>-->
+<!--                      <p><a class="project__author" href="profile.html">By Veronica</a></p>-->
+<!--                      <p class="project&#45;&#45;rating">-->
+<!--                        <span style="font-weight: bold;">36%</span> Postitive-->
+<!--                        Feedback (18 Votes)-->
+<!--                      </p>-->
+<!--                      <div class="project__tags">-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Epoxy resin</small>-->
+<!--                        </span>-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Solid enamel</small>-->
+<!--                        </span>-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Dyes</small>-->
+<!--                        </span><span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Furniture</small>-->
+<!--                        </span>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--                 {% endfor %}-->
+
+<!--              {% for project3 in projects3 %}-->
+<!--              <div class="column">-->
+<!--                <div class="card project">-->
+<!--                  <a href="single-project.html" class="project">-->
+<!--                    <img class="project__thumbnail" src="images/E.jpg" alt="project thumbnail" />-->
+<!--                    <div class="card__body">-->
+<!--                      <h3 class="project__title">Сережки из эпоксидной смолы</h3>-->
+<!--                      <p><a class="project__author" href="profile.html">By Hristina</a></p>-->
+<!--                      <p class="project&#45;&#45;rating">-->
+<!--                        <span style="font-weight: bold;">98%</span> Postitive-->
+<!--                        Feedback (72 Votes)-->
+<!--                      </p>-->
+<!--                      <div class="project__tags">-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Epoxy resin</small>-->
+<!--                        </span>-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Dried flowers</small>-->
+<!--                        </span>-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Furniture</small>-->
+<!--                        </span>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--                 {% endfor %}-->
+
+<!--              {% for project4 in projects4 %}-->
+<!--              <div class="column">-->
+<!--                <div class="card project">-->
+<!--                  <a href="single-project.html" class="project">-->
+<!--                    <img class="project__thumbnail" src="images/F.jpeg" alt="project thumbnail" />-->
+<!--                    <div class="card__body">-->
+<!--                      <h3 class="project__title">Подставка из эпоксидной смолы</h3>-->
+<!--                      <p><a class="project__author" href="profile.html">By Mary</a></p>-->
+<!--                      <p class="project&#45;&#45;rating">-->
+<!--                        <span style="font-weight: bold;">92%</span> Postitive-->
+<!--                        Feedback (62 Votes)-->
+<!--                      </p>-->
+<!--                      <div class="project__tags">-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Epoxy resin</small>-->
+<!--                        </span>-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Dyes</small>-->
+<!--                        </span>-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Furniture</small>-->
+<!--                        </span>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--                 {% endfor %}-->
+
+<!--              {% for project5 in projects5 %}-->
+<!--              <div class="column">-->
+<!--                <div class="card project">-->
+<!--                  <a href="single-project.html" class="project">-->
+<!--                    <img class="project__thumbnail" src="images/K.jpg" alt="project thumbnail" />-->
+<!--                    <div class="card__body">-->
+<!--                      <h3 class="project__title">Чехол из эпоксидной смолы</h3>-->
+<!--                      <p><a class="project__author" href="profile.html">By Anna</a></p>-->
+<!--                      <p class="project&#45;&#45;rating">-->
+<!--                        <span style="font-weight: bold;">36%</span> Postitive-->
+<!--                        Feedback (18 Votes)-->
+<!--                      </p>-->
+<!--                      <div class="project__tags">-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Epoxy resin</small>-->
+<!--                        </span>-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Dyes</small>-->
+<!--                        </span>-->
+<!--                        <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                          <small>Liquid enamel</small>-->
+<!--                        </span>-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </a>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              {% endfor %}-->
+            </div>
+          </div>
+        </section>
+      </main>
+
+    {% endblock %}
