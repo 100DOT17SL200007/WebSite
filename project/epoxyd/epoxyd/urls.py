@@ -21,7 +21,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('epoxydsmola.urls')),
+    path('epoxydsmola/', include('epoxydsmola.urls')),
+    path('', include('users.urls')),
 ]
 
 if settings.DEBUG:

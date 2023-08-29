@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Project
 from .forms import ProjectF
 
+
 def projects(request):
     pr = Project.objects.all()
     context = {
@@ -9,9 +10,11 @@ def projects(request):
     }
     return render(request, 'projects/projects.html', context)
 
+
 def project(request, pk):
     project_obj = Project.objects.get(id=pk)
     return render(request, "projects/single-project.html", {'project': project_obj})
+
 
 def create_project(request):
     form = ProjectF()

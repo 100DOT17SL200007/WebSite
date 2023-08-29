@@ -22,32 +22,32 @@
      <section class="projectsList">
          <div class="container">
              <div class="grid grid--three">
-                 {% for project in projects %}
-                 <div class="column">
-                <div class="card project">
-                  <a href="{% url 'project' project.id %}" class="project">
-                    <img class="project__thumbnail" src="{{ project.featured_image.url }}" alt="project thumbnail" />
-                    <div class="card__body">
-                      <h3 class="project__title">{{ project.title }}</h3>
+                     {% for project in projects %}
+                     <div class="column">
+                    <div class="card project">
+                      <a href="{% url 'project' project.id %}" class="project">
+                        <img class="project__thumbnail" src="{{ project.featured_image.url }}" alt="project thumbnail" />
+                        <div class="card__body">
+                          <h3 class="project__title">{{ project.title }}</h3>
 
-                      <p><a class="project__author" href="profile.html">By Ksenia</a></p>
+                          <p><a class="project__author" href="profile.html">By {{ project.owner }}</a></p>
 
-                      <p class="project--rating">
-                        <span style="font-weight: bold;">{{ project.vote_ratio }}</span> Postitive
-                        Feedback ({{project.vote_total}} Votes)
-                      </p>
-                      <div class="project__tags">
-                          {% for tag in project.tags.all %}
-                        <span class="tag tag--pill tag--main">
-                          <small>{{ tag }}</small>
-                        </span>
-                          {%  endfor %}
-                      </div>
+                          <p class="project--rating">
+                            <span style="font-weight: bold;">{{ project.vote_ratio }}</span> Postitive
+                            Feedback ({{project.vote_total}} Votes)
+                          </p>
+                          <div class="project__tags">
+                              {% for tag in project.tags.all %}
+                            <span class="tag tag--pill tag--main">
+                              <small>{{ tag }}</small>
+                            </span>
+                              {%  endfor %}
+                          </div>
+                        </div>
+                      </a>
                     </div>
-                  </a>
-                </div>
-              </div>
-                 {% endfor %}
+                  </div>
+                     {% endfor %}
 
 <!--              {% for project1 in projects1 %}-->
 <!--              <div class="column">-->
