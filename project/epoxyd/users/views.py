@@ -10,8 +10,9 @@ from django.contrib.auth.decorators import login_required
 
 def profiles(request):
     search_query = ''
-
-    if request.GET.get('search_query'):
+    #
+    # if request.GET.get('search_query'):
+    #     search_query = if request.GET.get('search_query')
 
     prof = Profile.objects.all()
     context = {'profiles': prof}

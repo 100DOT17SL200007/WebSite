@@ -12,8 +12,8 @@ class Profile(models.Model):
     short_intro = models.CharField(max_length=200, null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     profile_image = models.ImageField(upload_to='profile/', default='profile/user.png')
-    social_github = models.CharField(max_length=200, null=True, blank=True)
-    social_youtube = models.CharField(max_length=200, null=True, blank=True)
+    # social_github = models.CharField(max_length=200, null=True, blank=True)
+    # social_youtube = models.CharField(max_length=200, null=True, blank=True)
     social_website = models.CharField(max_length=200, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
 
@@ -29,6 +29,7 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
+
 
 
 
