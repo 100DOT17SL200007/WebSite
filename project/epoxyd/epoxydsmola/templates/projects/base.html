@@ -23,19 +23,20 @@
 
 {% include 'projects/import.html'  %}
 
-{% if messages %}
-{% for message in messages %}
-<div style="text-align: center">
-    <div class="alert alert--{{message.tags}}">
-        <p class="alert__message">{{ message }}</p>
-        <button class="alert__close">х</button>
-    </div>
-</div>
-{% endfor %}
-{% endif %}
+<!--{% if messages %}-->
+<!--{% for message in messages %}-->
+<!--<div style="text-align: center">-->
+<!--    <div class="alert alert&#45;&#45;{{message.tags}}">-->
+<!--        <p class="alert__message">{{ message }}</p>-->
+<!--        <button class="alert__close">х</button>-->
+<!--    </div>-->
+<!--</div>-->
+<!--{% endfor %}-->
+<!--{% endif %}-->
 
 {% block content %}{% endblock %}
 
 <script src="{% static 'uikit/app.js' %}"></script>
+<!--<script src="{% static 'js/script.js' %}"></script>-->
 </body>
 </html>

@@ -17,7 +17,7 @@
                 </li>
                 {% endif %}
               </ul>
-              <a href="#" class="btn btn--sub btn--lg">Send Message </a>
+
             </div>
           </div>
         </div>
@@ -62,11 +62,11 @@
                     <img class="project__thumbnail" src="{{ project.featured_image.url }}" alt="project thumbnail" />
                     <div class="card__body">
                       <h3 class="project__title">{{ project.title }}</h3>
-                      <p><a class="project__author" href="{% url 'user_profile' project.owner.id %}">By {{ project.owner.name }}</a></p>
-                      <p class="project--rating">
-                        <span style="font-weight: bold;">{{ project.vote_ratio }}</span> Postitive
-                        Feedback ({{ project.vote_total }} Votes)
-                      </p>
+                      <p><a class="project__author" href="{% url 'user-profile' project.owner.id %}">By {{project.owner.name}}</a></p>
+<!--                      <p class="project&#45;&#45;rating">-->
+<!--                        <span style="font-weight: bold;">{{ project.vote_ratio }}</span> Postitive-->
+<!--                        Feedback ({{ project.vote_total }} Votes)-->
+<!--                      </p>-->
                       <div class="project__tags">
                         {% for tag in project.tags.all %}
                         <span class="tag tag--pill tag--main">

@@ -1,7 +1,26 @@
 from django.shortcuts import render, redirect
-from .models import Project
-from .forms import ProjectF
+from .models import Project, Tag
+from .forms import ProjectForm
+# ReviewForm
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
+
+# from .utils import search_projects, paginate_projects
+# from django.contrib import messages
+def projects(request):
+    search_query = ''
+
+    if request.GET.get('search_query'):
+        search_query = request.GET.get('search_query')
+
+    pr = Project.objects.filter(
+        Q(title__icontains=search_query)
+    )
+    context = {
+        'projects': pr,
+        'search_query': search_query
+    }
+    return render(request, 'projects/projects.html', context)
 
 
 def projects(request):
@@ -17,13 +36,43 @@ def project(request, pk):
     return render(request, "projects/single-project.html", {'project': project_obj})
 
 
+# def projects(request):
+#     pr, search_query = search_projects(request)
+#     custom_range, pr = paginate_projects(request, pr, 3)
+#
+#     context = {
+#         'projects': pr,
+#         'search_query': search_query,
+#         'custom_range': custom_range
+#     }
+#     return render(request, 'projects/projects.html', context)
+
+
+# def project(request, pk):
+#     project_obj = Project.objects.get(id=pk)
+#     form = ReviewForm()
+#
+#     if request.method == 'POST':
+#         form = ReviewForm(request.POST)
+#         review = form.save(commit=False)
+#         review.project = project_obj
+#         review.owner = request.user.profile
+#         review.save()
+#
+#         project_obj.get_vote_count()
+#
+#         messages.success(request, 'Your review was successfully submitted!')
+#         return redirect('project', pk=project_obj.id)
+#     return render(request, "projects/single-project.html", {'project': project_obj, 'form': form})
+
+
 @login_required(login_url="login")
 def create_project(request):
     profile = request.user.profile
-    form = ProjectF()
+    form = ProjectForm()
 
     if request.method == 'POST':
-        form = ProjectF(request.POST, request.FILES)
+        form = ProjectForm(request.POST, request.FILES)
         if form.is_valid():
             project = form.save(commit=False)
             project.owner = profile
@@ -37,10 +86,10 @@ def create_project(request):
 def update_project(request, pk):
     profile = request.user.profile
     project = profile.project_set.get(id=pk)
-    form = ProjectF(instance=project)
+    form = ProjectForm(instance=project)
 
     if request.method == 'POST':
-        form = ProjectF(request.POST, request.FILES, instance=project)
+        form = ProjectForm(request.POST, request.FILES, instance=project)
         if form.is_valid():
             project = form.save()
             return redirect('account')
